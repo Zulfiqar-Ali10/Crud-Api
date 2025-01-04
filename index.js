@@ -3,9 +3,22 @@ import 'dotenv/config'
 import morgan from "morgan";
 import mongoose from "mongoose";
 import bannerRoutes from "./routers/banner.js";
+const cors = require('cors')
 
 const app = express();
 const PORT = 5000;
+
+
+const corsOption = {
+    origin: 'http://localhost:5173',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    CredentialS: true,
+    optionSuccessStatus: 204
+};
+
+
+// Enable CORS for all routes
+app.use(cors(corsOption));
 
 
 console.log("MONGODBURI=>", process.env.MONGODBURI);
